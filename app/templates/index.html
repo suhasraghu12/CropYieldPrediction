@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Yield Prediction</h1>
+        <form action="{{ url_for('index') }}" method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.nitrogen_pct.label }}<br>
+                {{ form.nitrogen_pct(size=32) }}<br>
+            </div>
+            <div class="form-group">
+                {{ form.nitrogen_lbs.label }}<br>
+                {{ form.nitrogen_lbs(size=32) }}<br>
+            </div>
+            <div class="form-group">
+                {{ form.phosphorous_pct.label }}<br>
+                {{ form.phosphorous_pct(size=32) }}<br>
+            </div>
+            <div class="form-group">
+                {{ form.phosphorous_lbs.label }}<br>
+                {{ form.phosphorous_lbs(size=32) }}<br>
+            </div>
+            <div class="form-group">
+                {{ form.potash_pct.label }}<br>
+                {{ form.potash_pct(size=32) }}<br>
+            </div>
+            <div class="form-group">
+                {{ form.potash_lbs.label }}<br>
+                {{ form.potash_lbs(size=32) }}<br>
+            </div>
+            <div class="form-group">
+                {{ form.area_planted.label }}<br>
+                {{ form.area_planted(size=32) }}<br>
+            </div>
+            <div class="form-group">
+                {{ form.harvested_area.label }}<br>
+                {{ form.harvested_area(size=32) }}<br>
+            </div>
+            <button type="submit">{{ form.submit.label }}</button>
+        </form>
+        {% if prediction %}
+        <h2>Predicted Yield: {{ prediction }} Kg/Harvested Hectare</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
